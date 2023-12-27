@@ -65,8 +65,9 @@ const Register = () => {
         <CustomCheckbox />
         <Text> I agree to the terms and conditions</Text>
       </View>
-
-      <Button title="Submit" onPress={handleRegistration} />
+      <TouchableOpacity style={styles.btn}>
+        <Text style={styles.btntext}>Sign up</Text>
+      </TouchableOpacity>
     </View>
   );
 };
@@ -112,5 +113,18 @@ const styles = StyleSheet.create({
   lable: {
     fontSize: 17,
     marginBottom: 5,
+  },
+  btn: {
+    backgroundColor: '#007DFC',
+    padding: 15,
+    borderRadius: 15,
+    width: 300,
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  btntext: {
+    color: 'white',
+    fontSize: 20,
+    fontWeight: '700',
   },
 });
