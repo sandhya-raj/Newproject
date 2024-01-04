@@ -9,6 +9,9 @@ import {
 } from 'react-native';
 
 function Home({navigation}) {
+
+  // console.log(navigation, 'naviga');
+
   const started = () => {
     navigation.navigate('Register');
   };

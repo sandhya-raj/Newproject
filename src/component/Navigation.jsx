@@ -5,6 +5,8 @@ import {createNativeStackNavigator} from '@react-navigation/native-stack';
 import Register from '../screen/Register';
 import Splash from '../screen/Spalsh';
 import Home from '../screen/Home';
+import OtpScreen from '../screen/OtpScreen';
+import SignIn from '../screen/SignIn';
 
 const Stack = createNativeStackNavigator();
 
@@ -15,21 +17,11 @@ export const Navigation = () => {
         screenOptions={{
           headerShown: false,
         }}>
-        <Stack.Screen
-          name="Splash"
-          component={Splash}
-          options={{headerShown: false}}
-        />
-        <Stack.Screen
-          name="Home"
-          component={Home}
-          options={{headerShown: false}}
-        />
-        <Stack.Screen
-          name="Register"
-          component={Register}
-          options={{headerShown: false}}
-        />
+        <Stack.Screen name="Splash" component={Splash} />
+        <Stack.Screen name="Home" component={Home} />
+        <Stack.Screen name="Register" component={Register} />
+        <Stack.Screen name="OtpScreen" component={OtpScreen} />
+        <Stack.Screen name="SignIn" component={SignIn} />
       </Stack.Navigator>
     </NavigationContainer>
   );

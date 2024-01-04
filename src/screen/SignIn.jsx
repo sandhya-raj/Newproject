@@ -8,10 +8,8 @@ import {
   Button,
   Image,
 } from 'react-native';
-// Change the import statement
-import CustomCheckbox from '../component/Customcheckbox';
 
-function Register({navigation}) {
+function SignIn({navigation}) {
   console.log(navigation, 'naviga');
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
@@ -19,26 +17,14 @@ function Register({navigation}) {
   const [isChecked, setIsChecked] = useState(false);
   const [hidePassword, setHidePassword] = useState(true);
 
-   const signup = () => {
+  const signup = () => {
     navigation.navigate('OtpScreen');
   };
 
   return (
     <View style={styles.container}>
-      <Text style={styles.title}>Create Account</Text>
-      <Text style={styles.subtitle}>
-        Fill your information below or register with your social account
-      </Text>
-      <View style={styles.inputContainer}>
-        <Text style={styles.lable}>Name:</Text>
-        <TextInput
-          style={styles.input}
-          placeholder="Enter your name"
-          onChangeText={text => setName(text)}
-          value={name}
-        />
-      </View>
-
+      <Text style={styles.title}>Sign In</Text>
+      <Text style={styles.subtitle}>Hi Welcome back You've been missed</Text>
       <View style={styles.inputContainer}>
         <Text style={styles.lable}>Email:</Text>
         <TextInput
@@ -79,28 +65,26 @@ function Register({navigation}) {
         </View>
       </View>
 
-      <View style={styles.checkboxContainer}>
-        <CustomCheckbox />
-        <Text style={styles.agree}>Agree with </Text>
-        <TouchableOpacity style={styles.termsview}>
-          <Text style={styles.terms}>Terms and conditions</Text>
+      <View style={styles.forgetview}>
+        <TouchableOpacity>
+          <Text style={styles.forget}>Forget Password</Text>
         </TouchableOpacity>
       </View>
 
-      <TouchableOpacity style={styles.btn} onPress={()=>signup()}>
+      <TouchableOpacity style={styles.btn} onPress={() => signup()}>
         <Text style={styles.btntext}>Sign up</Text>
       </TouchableOpacity>
     </View>
   );
-};
+}
 
-export default Register;
+export default SignIn;
 const styles = StyleSheet.create({
   container: {
     flex: 1,
     alignItems: 'center',
     paddingHorizontal: 20,
-    paddingVertical: 100,
+    paddingTop: 100,
   },
   title: {
     fontSize: 30,
@@ -175,5 +159,14 @@ const styles = StyleSheet.create({
     height: 20,
     width: 20,
     alignSelf: 'center',
+  },
+  forgetview: {
+    borderBottomColor: '#007DFC',
+    borderBottomWidth: 1,
+    marginBottom: 5,
+    alignSelf: 'flex-end',
+  },
+  forget: {
+    color: '#007DFC',
   },
 });
