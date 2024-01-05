@@ -5,9 +5,10 @@ import {
   StyleSheet,
   TouchableOpacity,
   TextInput,
-  Button,
   Image,
 } from 'react-native';
+import {blue} from '../../config';
+import Custombutton from '../component/Custombuton';
 
 function SignIn({navigation}) {
   console.log(navigation, 'naviga');
@@ -17,8 +18,8 @@ function SignIn({navigation}) {
   const [isChecked, setIsChecked] = useState(false);
   const [hidePassword, setHidePassword] = useState(true);
 
-  const signup = () => {
-    navigation.navigate('OtpScreen');
+  const signin = () => {
+    navigation.navigate('Forgetpass');
   };
 
   return (
@@ -70,10 +71,7 @@ function SignIn({navigation}) {
           <Text style={styles.forget}>Forget Password</Text>
         </TouchableOpacity>
       </View>
-
-      <TouchableOpacity style={styles.btn} onPress={() => signup()}>
-        <Text style={styles.btntext}>Sign up</Text>
-      </TouchableOpacity>
+      <Custombutton text={'Sign In'} onPress={signin} />
     </View>
   );
 }
@@ -120,7 +118,7 @@ const styles = StyleSheet.create({
     marginBottom: 5,
   },
   btn: {
-    backgroundColor: '#007DFC',
+    backgroundColor: blue,
     padding: 15,
     borderRadius: 15,
     width: 300,
@@ -138,12 +136,12 @@ const styles = StyleSheet.create({
     fontWeight: '500',
   },
   terms: {
-    color: '#007DFC',
+    color: blue,
     fontSize: 15,
     fontWeight: '500',
   },
   termsview: {
-    borderBottomColor: '#007DFC',
+    borderBottomColor: blue,
     borderBottomWidth: 1,
   },
   passwordInput: {
@@ -161,12 +159,13 @@ const styles = StyleSheet.create({
     alignSelf: 'center',
   },
   forgetview: {
-    borderBottomColor: '#007DFC',
+    borderBottomColor: blue,
     borderBottomWidth: 1,
-    marginBottom: 5,
+    marginBottom: 15,
     alignSelf: 'flex-end',
+    marginEnd: 25,
   },
   forget: {
-    color: '#007DFC',
+    color: blue,
   },
 });

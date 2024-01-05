@@ -7,14 +7,11 @@ import {
   TextInput,
   Button,
   Image,
-  ScrollView,
 } from 'react-native';
-// Change the import statement
-import CustomCheckbox from '../component/Customcheckbox';
 import {blue} from '../../config';
 import Custombutton from '../component/Custombuton';
-
-function Register({navigation}) {
+import Header from '../component/Header';
+function Forgetpass({navigation}) {
   console.log(navigation, 'naviga');
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
@@ -27,33 +24,13 @@ function Register({navigation}) {
   };
 
   return (
-    <ScrollView>
+    <View style={styles.containerView}>
+      <Header />
       <View style={styles.container}>
-        <Text style={styles.title}>Create Account</Text>
+        <Text style={styles.title}>New Password</Text>
         <Text style={styles.subtitle}>
-          Fill your information below or register with your social account
+          Your new password must be different from previously used password
         </Text>
-        <View style={styles.inputContainer}>
-          <Text style={styles.lable}>Name:</Text>
-          <TextInput
-            style={styles.input}
-            placeholder="Enter your name"
-            onChangeText={text => setName(text)}
-            value={name}
-          />
-        </View>
-
-        <View style={styles.inputContainer}>
-          <Text style={styles.lable}>Email:</Text>
-          <TextInput
-            style={styles.input}
-            placeholder="Enter your email"
-            onChangeText={text => setEmail(text)}
-            value={email}
-            keyboardType="email-address"
-          />
-        </View>
-
         <View style={styles.inputContainer}>
           <Text style={styles.lable}>Password:</Text>
           <View style={styles.passwordInput}>
@@ -83,30 +60,55 @@ function Register({navigation}) {
           </View>
         </View>
 
-        <View style={styles.checkboxContainer}>
-          <CustomCheckbox />
-          <Text style={styles.agree}>Agree with </Text>
-          <TouchableOpacity style={styles.termsview}>
-            <Text style={styles.terms}>Terms and conditions</Text>
-          </TouchableOpacity>
+        <View style={styles.inputContainer}>
+          <Text style={styles.lable}>Confirm Password:</Text>
+          <View style={styles.passwordInput}>
+            <TextInput
+              style={{flex: 1}}
+              placeholder="Enter your password"
+              onChangeText={text => setPassword(text)}
+              value={password}
+              secureTextEntry={hidePassword}
+            />
+            <TouchableOpacity
+              style={styles.eyeIcon}
+              onPress={() => setHidePassword(!hidePassword)}>
+              {!hidePassword && (
+                <Image
+                  source={require('../../assets/Image/eye.png')}
+                  style={styles.show}
+                />
+              )}
+              {hidePassword && (
+                <Image
+                  source={require('../../assets/Image/hideeye.png')}
+                  style={styles.show}
+                />
+              )}
+            </TouchableOpacity>
+          </View>
         </View>
-
-        {/* <TouchableOpacity style={styles.btn} onPress={()=>signup()}>
-        <Text style={styles.btntext}>Sign up</Text>
-      </TouchableOpacity> */}
-        <Custombutton text={'Sign Up'} onPress={signup} />
+        <Custombutton
+          text={'Create  new password'}
+          onPress={signup}
+          customContainerStyle={styles.btn}
+        />
       </View>
-    </ScrollView>
+    </View>
   );
 }
 
-export default Register;
+export default Forgetpass;
 const styles = StyleSheet.create({
-  container: {
+  containerView: {
     flex: 1,
+    paddingHorizontal: 20,
+    paddingTop: 10,
+  },
+  container: {
     alignItems: 'center',
     paddingHorizontal: 20,
-    paddingVertical: 100,
+    paddingTop: 30,
   },
   title: {
     fontSize: 30,
@@ -141,14 +143,7 @@ const styles = StyleSheet.create({
     fontSize: 17,
     marginBottom: 5,
   },
-  btn: {
-    backgroundColor: blue,
-    padding: 15,
-    borderRadius: 15,
-    width: 300,
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
+
   btntext: {
     color: 'white',
     fontSize: 20,
@@ -174,13 +169,25 @@ const styles = StyleSheet.create({
     borderColor: '#ccc',
     borderRadius: 8,
     width: 300,
-    alignItems: 'center',
+    padding: 13,
     justifyContent: 'space-between',
   },
   show: {
     height: 20,
     width: 20,
     alignSelf: 'center',
-    marginRight: 5,
+  },
+  forgetview: {
+    borderBottomColor: blue,
+    borderBottomWidth: 1,
+    marginBottom: 15,
+    alignSelf: 'flex-end',
+    marginEnd: 25,
+  },
+  forget: {
+    color: blue,
+  },
+  btn: {
+    marginTop: 30,
   },
 });

@@ -1,6 +1,8 @@
 import React, {useState} from 'react';
 import {View, Button, Text, StyleSheet} from 'react-native';
 import OTPTextInput from 'react-native-otp-textinput';
+import Custombutton from '../component/Custombuton';
+import { blue } from '../../config';
 
 const OTPScreen = ({navigation}) => {
   const [otp, setOTP] = useState('');
@@ -18,7 +20,7 @@ const OTPScreen = ({navigation}) => {
       <Text style={styles.subtitle}>
         Please enter the code we just sent to email
       </Text>
-      <Text>sar@gmail.com</Text>
+      <Text style={styles.example}>sar@gmail.com</Text>
       <OTPTextInput
         containerStyle={{width: '60%', height: 100, marginTop: 20}}
         inputCount={4}
@@ -33,8 +35,7 @@ const OTPScreen = ({navigation}) => {
           backgroundColor: 'lightgrey',
         }}
       />
-
-      <Button title="Verify OTP" onPress={verifyOTP} />
+      <Custombutton text={'Verify'} onPress={verifyOTP} />
     </View>
   );
 };
@@ -51,6 +52,10 @@ const styles = StyleSheet.create({
     color: 'grey',
     marginHorizontal: 17,
     textAlign: 'center',
+  },
+  example: {
+    color: blue,
+    fontWeight: '600',
   },
 });
 

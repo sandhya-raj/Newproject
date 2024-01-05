@@ -1,7 +1,7 @@
 import React, {useEffect} from 'react';
 import {StyleSheet, Text, Image, View, SafeAreaView} from 'react-native';
 import {RNSScreenStackHeaderConfig} from 'react-native-screens';
-
+import { blue } from '../../config';
 const Splash = ({navigation}) => {
   useEffect(() => {
     setTimeout(() => {
@@ -24,7 +24,7 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
-    backgroundColor: '#007DFC',
+    backgroundColor: blue,
   },
   image: {
     height: 240,

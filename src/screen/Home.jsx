@@ -7,9 +7,9 @@ import {
   StyleSheet,
   TouchableOpacity,
 } from 'react-native';
+import {blue} from '../../config';
 
 function Home({navigation}) {
-
   // console.log(navigation, 'naviga');
 
   const started = () => {
@@ -21,18 +21,20 @@ function Home({navigation}) {
       source={require('../../assets/Image/homepageimage.jpeg')}
       resizeMode="stretch"
       style={styles.backgroundimagestyle}>
-      <Text style={styles.title}>Find The Best Car Parking Spot</Text>
-      <Text style={styles.subtitle}>
-        Find the best parking spot ,every time , without hassls
-      </Text>
-      <TouchableOpacity style={styles.buttun} onPress={started}>
-        <Text style={styles.buttuntxt}>Let's Get Started</Text>
-      </TouchableOpacity>
-      <View style={styles.account}>
-        <Text style={styles.bottontext}> Already have an account?</Text>
-        <TouchableOpacity>
-          <Text style={styles.bottontext2}>Sign in</Text>
+      <View style={styles.container}>
+        <Text style={styles.title}>Find The Best Car Parking Spot</Text>
+        <Text style={styles.subtitle}>
+          Find the best parking spot ,every time , without hassls
+        </Text>
+        <TouchableOpacity style={styles.buttun} onPress={started}>
+          <Text style={styles.buttuntxt}>Let's Get Started</Text>
         </TouchableOpacity>
+        <View style={styles.account}>
+          <Text style={styles.bottontext}> Already have an account?</Text>
+          <TouchableOpacity>
+            <Text style={styles.bottontext2}>Sign in</Text>
+          </TouchableOpacity>
+        </View>
       </View>
     </ImageBackground>
   );
@@ -44,6 +46,14 @@ const styles = StyleSheet.create({
     flex: 1,
     alignItems: 'center',
     justifyContent: 'flex-end',
+  },
+  container: {
+    backgroundColor: 'rgba(0, 0, 0, 0.5)',
+    flex: 1,
+    alignItems: 'center',
+    justifyContent: 'flex-end',
+    width: '100%',
+    height: '100%',
     paddingBottom: 50,
   },
   title: {
@@ -66,7 +76,7 @@ const styles = StyleSheet.create({
     width: 250,
   },
   buttun: {
-    backgroundColor: '#007DFC',
+    backgroundColor: blue,
     borderRadius: 20,
     alignItems: 'center',
     padding: 10,
@@ -94,10 +104,10 @@ const styles = StyleSheet.create({
   bottontext2: {
     fontSize: 15,
     textAlign: 'center',
-    color: '#007DFC',
+    color: blue,
     fontWeight: '300',
     marginLeft: 5,
-    borderBottomColor: '#007DFC',
+    borderBottomColor: blue,
     borderBottomWidth: 1,
   },
 });
