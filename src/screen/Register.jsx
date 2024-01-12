@@ -27,7 +27,7 @@ function Register({navigation}) {
   };
 
   return (
-    <ScrollView>
+    <ScrollView showsVerticalScrollIndicator={false}>
       <View style={styles.container}>
         <Text style={styles.title}>Create Account</Text>
         <Text style={styles.subtitle}>
@@ -81,19 +81,14 @@ function Register({navigation}) {
               )}
             </TouchableOpacity>
           </View>
+          <View style={styles.checkboxContainer}>
+            <CustomCheckbox />
+            <Text style={styles.agree}>Agree with </Text>
+            <TouchableOpacity style={styles.termsview}>
+              <Text style={styles.terms}>Terms and conditions</Text>
+            </TouchableOpacity>
+          </View>
         </View>
-
-        <View style={styles.checkboxContainer}>
-          <CustomCheckbox />
-          <Text style={styles.agree}>Agree with </Text>
-          <TouchableOpacity style={styles.termsview}>
-            <Text style={styles.terms}>Terms and conditions</Text>
-          </TouchableOpacity>
-        </View>
-
-        {/* <TouchableOpacity style={styles.btn} onPress={()=>signup()}>
-        <Text style={styles.btntext}>Sign up</Text>
-      </TouchableOpacity> */}
         <Custombutton text={'Sign Up'} onPress={signup} />
       </View>
     </ScrollView>
@@ -106,17 +101,20 @@ const styles = StyleSheet.create({
     flex: 1,
     alignItems: 'center',
     paddingHorizontal: 20,
-    paddingVertical: 100,
+    paddingTop: 100,
+    paddingBottom: 130,
+    backgroundColor: '#fff',
   },
   title: {
     fontSize: 30,
-    marginBottom: 20,
+    marginBottom: 7,
     fontWeight: '600',
     marginTop: 20,
+    textAlign: 'center',
   },
   subtitle: {
     fontSize: 17,
-    marginBottom: 30,
+    marginBottom: 40,
     color: 'grey',
     marginHorizontal: 17,
     textAlign: 'center',
@@ -130,12 +128,12 @@ const styles = StyleSheet.create({
     padding: 13,
     borderRadius: 8,
     width: 300,
+    height: 45,
+    backgroundColor: '#f6f6f6',
   },
   checkboxContainer: {
     flexDirection: 'row',
-    alignItems: 'center',
-    marginBottom: 15,
-    marginHorizontal: 50,
+    marginTop: 15,
   },
   lable: {
     fontSize: 17,
@@ -163,11 +161,10 @@ const styles = StyleSheet.create({
     color: blue,
     fontSize: 15,
     fontWeight: '500',
-  },
-  termsview: {
     borderBottomColor: blue,
     borderBottomWidth: 1,
   },
+
   passwordInput: {
     flexDirection: 'row',
     borderWidth: 1,
@@ -176,6 +173,8 @@ const styles = StyleSheet.create({
     width: 300,
     alignItems: 'center',
     justifyContent: 'space-between',
+    height: 45,
+    backgroundColor: '#f6f6f6',
   },
   show: {
     height: 20,

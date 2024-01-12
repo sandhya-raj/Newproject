@@ -18,7 +18,7 @@ function Forgetpass({navigation}) {
   const [password, setPassword] = useState('');
   const [isChecked, setIsChecked] = useState(false);
   const [hidePassword, setHidePassword] = useState(true);
-
+  const [Passwordconfirm, setPasswordconfirm] = useState('');
   const signup = () => {
     navigation.navigate('OtpScreen');
   };
@@ -66,8 +66,8 @@ function Forgetpass({navigation}) {
             <TextInput
               style={{flex: 1}}
               placeholder="Enter your password"
-              onChangeText={text => setPassword(text)}
-              value={password}
+              onChangeText={text => setPasswordconfirm(text)}
+              value={Passwordconfirm}
               secureTextEntry={hidePassword}
             />
             <TouchableOpacity
@@ -103,7 +103,7 @@ const styles = StyleSheet.create({
   containerView: {
     flex: 1,
     paddingHorizontal: 20,
-    paddingTop: 10,
+    backgroundColor: '#fff',
   },
   container: {
     alignItems: 'center',
@@ -112,15 +112,14 @@ const styles = StyleSheet.create({
   },
   title: {
     fontSize: 30,
-    marginBottom: 20,
+    marginBottom: 10,
     fontWeight: '600',
     marginTop: 20,
   },
   subtitle: {
     fontSize: 17,
-    marginBottom: 30,
+    marginBottom: 40,
     color: 'grey',
-    marginHorizontal: 17,
     textAlign: 'center',
   },
   inputContainer: {
@@ -171,6 +170,9 @@ const styles = StyleSheet.create({
     width: 300,
     padding: 13,
     justifyContent: 'space-between',
+    height: 45,
+    backgroundColor: '#f6f6f6',
+    alignItems: 'center',
   },
   show: {
     height: 20,
@@ -187,7 +189,9 @@ const styles = StyleSheet.create({
   forget: {
     color: blue,
   },
+
   btn: {
     marginTop: 30,
+    alignItems: 'center',
   },
 });

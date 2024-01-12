@@ -1,16 +1,25 @@
 import React, {useEffect} from 'react';
-import {StyleSheet, Text, Image, View, SafeAreaView} from 'react-native';
+import {
+  StyleSheet,
+  Text,
+  Image,
+  View,
+  SafeAreaView,
+  StatusBar,
+} from 'react-native';
 import {RNSScreenStackHeaderConfig} from 'react-native-screens';
-import { blue } from '../../config';
+import {blue} from '../../config';
+
 const Splash = ({navigation}) => {
   useEffect(() => {
     setTimeout(() => {
-      navigation.replace('Home');
+      navigation.replace('Landing');
     }, 8000);
   });
 
   return (
-    <View style={styles.linearGradient}>
+    <View style={styles.container}>
+      <StatusBar backgroundColor={blue} barStyle="light-content" />
       <Image source={require('../../assets/Image/splashIcon.png')} />
       <Text style={styles.Heading}>Car Parking App</Text>
     </View>
@@ -20,7 +29,7 @@ const Splash = ({navigation}) => {
 export default Splash;
 
 const styles = StyleSheet.create({
-  linearGradient: {
+  container: {
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center',

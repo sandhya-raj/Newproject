@@ -9,7 +9,8 @@ import {
 } from 'react-native';
 import {blue} from '../../config';
 import Custombutton from '../component/Custombuton';
-
+import Card from '../component/Card';
+import CardHori from '../component/CardHori';
 function SignIn({navigation}) {
   console.log(navigation, 'naviga');
   const [name, setName] = useState('');
@@ -19,7 +20,7 @@ function SignIn({navigation}) {
   const [hidePassword, setHidePassword] = useState(true);
 
   const signin = () => {
-    navigation.navigate('Forgetpass');
+    navigation.navigate('Home');
   };
 
   return (
@@ -67,7 +68,10 @@ function SignIn({navigation}) {
       </View>
 
       <View style={styles.forgetview}>
-        <TouchableOpacity>
+        <TouchableOpacity
+          onPress={() => {
+            navigation.navigate('Forgetpass');
+          }}>
           <Text style={styles.forget}>Forget Password</Text>
         </TouchableOpacity>
       </View>
@@ -83,16 +87,17 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     paddingHorizontal: 20,
     paddingTop: 100,
+    backgroundColor: '#fff',
   },
   title: {
     fontSize: 30,
-    marginBottom: 20,
+    marginBottom: 10,
     fontWeight: '600',
     marginTop: 20,
   },
   subtitle: {
-    fontSize: 17,
-    marginBottom: 30,
+    fontSize: 15,
+    marginBottom: 40,
     color: 'grey',
     marginHorizontal: 17,
     textAlign: 'center',
@@ -103,9 +108,11 @@ const styles = StyleSheet.create({
   input: {
     borderWidth: 1,
     borderColor: '#ccc',
-    padding: 13,
+    padding: 10,
     borderRadius: 8,
     width: 300,
+    height: 45,
+    backgroundColor: '#f6f6f6',
   },
   checkboxContainer: {
     flexDirection: 'row',
@@ -150,8 +157,11 @@ const styles = StyleSheet.create({
     borderColor: '#ccc',
     borderRadius: 8,
     width: 300,
-    padding: 13,
     justifyContent: 'space-between',
+    alignItems: 'center',
+    height: 45,
+    paddingHorizontal: 5,
+    backgroundColor: '#f6f6f6',
   },
   show: {
     height: 20,
@@ -161,7 +171,7 @@ const styles = StyleSheet.create({
   forgetview: {
     borderBottomColor: blue,
     borderBottomWidth: 1,
-    marginBottom: 15,
+    marginBottom: 45,
     alignSelf: 'flex-end',
     marginEnd: 25,
   },

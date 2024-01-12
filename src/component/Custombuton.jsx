@@ -18,15 +18,17 @@ export default Custombutton;
 const styles = StyleSheet.create({
   button: {
     backgroundColor: blue,
-    padding: 15,
+    paddingHorizontal: 15,
     borderRadius: 15,
     width: 300,
     alignItems: 'center',
     justifyContent: 'center',
+    height: 50,
   },
   butuntext: {
     color: 'white',
     fontSize: 20,
     fontWeight: '700',
+    textAlign: 'center',
   },
 });

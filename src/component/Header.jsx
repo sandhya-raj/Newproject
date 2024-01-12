@@ -34,6 +34,7 @@ const styles = StyleSheet.create({
     justifyContent: 'flex-start',
     borderWidth: 1,
     borderRadius: 50,
+    marginTop: 20,
   },
   butuntext: {
     fontSize: 18,

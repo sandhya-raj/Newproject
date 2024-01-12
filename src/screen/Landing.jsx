@@ -6,21 +6,25 @@ import {
   ImageBackground,
   StyleSheet,
   TouchableOpacity,
+  StatusBar,
 } from 'react-native';
 import {blue} from '../../config';
 
-function Home({navigation}) {
+function Landing({navigation}) {
   // console.log(navigation, 'naviga');
 
   const started = () => {
     navigation.navigate('Register');
   };
-
+  const signin = () => {
+    navigation.navigate('SignIn');
+  };
   return (
     <ImageBackground
       source={require('../../assets/Image/homepageimage.jpeg')}
       resizeMode="stretch"
       style={styles.backgroundimagestyle}>
+      <StatusBar backgroundColor="#fff" barStyle="dark-content" />
       <View style={styles.container}>
         <Text style={styles.title}>Find The Best Car Parking Spot</Text>
         <Text style={styles.subtitle}>
@@ -31,7 +35,7 @@ function Home({navigation}) {
         </TouchableOpacity>
         <View style={styles.account}>
           <Text style={styles.bottontext}> Already have an account?</Text>
-          <TouchableOpacity>
+          <TouchableOpacity onPress={signin}>
             <Text style={styles.bottontext2}>Sign in</Text>
           </TouchableOpacity>
         </View>
@@ -40,7 +44,7 @@ function Home({navigation}) {
   );
 }
 
-export default Home;
+export default Landing;
 const styles = StyleSheet.create({
   backgroundimagestyle: {
     flex: 1,
