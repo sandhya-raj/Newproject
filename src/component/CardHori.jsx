@@ -1,44 +1,75 @@
 import React from 'react';
 import {View, Image, Text, StyleSheet} from 'react-native';
-import {blue} from '../../config';
+import {blue,grey} from '../../config';
 import {scale, verticalScale} from '../utils/scale';
+import { get } from 'react-native/Libraries/TurboModule/TurboModuleRegistry';
 
-const CardHori = () => {
+const CardHori = ({
+  source,
+  source1,
+  source2,
+  text,
+  text1,
+  location,
+  locationicon,
+  pay,
+  hours,
+  time,
+  min,
+  icon1,
+  icon2,
+  number,
+  spots,
+  star,
+  rating,
+}) => {
   return (
     <View style={styles.cardContainer}>
+      <View style={styles.starview}>
+        <Image
+          source={require('../../assets/Image/star.png')}
+          style={styles.staricon}
+        />
+        <Text style={{textAlign: 'center', fontSize: 13, marginLeft: 2}}>
+          {rating}
+        </Text>
+      </View>
       <View style={styles.cardContent}>
         <View style={styles.imageContainer}>
-          <Image
-            source={require('../../assets/Image/homepageimage.jpeg')}
-            style={styles.image}
-          />
+          <Image source={source} style={styles.image} />
           <View style={styles.iconContainer}>
-            <Image
-              source={require('../../assets/Image/eye.png')}
-              style={styles.icon}
-            />
-            <Image
-              source={require('../../assets/Image/eye.png')}
-              style={styles.icon}
-            />
+            <Image source={source1} style={styles.icon} />
           </View>
         </View>
         <View style={styles.textContainer}>
           <View style={styles.carPView}>
-            <Text style={styles.carP}>car Parking</Text>
+            <Text style={styles.carP}>{text}</Text>
           </View>
-          <Text style={styles.title}>ParkEase Pro</Text>
+          <Text style={styles.title}>{text1}</Text>
           <View style={styles.locationnameview}>
             <Image
-              source={require('../../assets/Image/location.png')}
+              source={require('../../assets/Image/location1.png')}
               style={styles.locationicon}
             />
-            <Text style={styles.subtext}>New York , USA</Text>
+            <Text style={styles.subtext}>{location}</Text>
           </View>
           <View style={styles.parkingpaytime}>
-            <Text style={styles.pay}>$8.00</Text>
-            <Text style={styles.time}>/hr</Text>
+            <Text style={styles.pay}>{pay}</Text>
+            <Text style={styles.time}>{hours}</Text>
           </View>
+        </View>
+      </View>
+      <View style={styles.horizontalLine} />
+      <View style={styles.bottomview}>
+        <View style={styles.timerview}>
+          <Image source={icon1} style={styles.timericon} />
+          <Text style={styles.text1}>{time}</Text>
+          <Text style={styles.text2}>{min}</Text>
+        </View>
+        <View style={styles.timerview}>
+          <Image source={icon2} style={styles.timericon} />
+          <Text style={styles.text1}>{number}</Text>
+          <Text style={styles.text2}>{spots}</Text>
         </View>
       </View>
     </View>
@@ -54,8 +85,12 @@ const styles = StyleSheet.create({
     shadowOpacity: 0.3,
     shadowRadius: 4,
     elevation: 5,
-    margin: 10,
-    width: '100%',
+    marginVertical: scale(5),
+    padding: scale(7),
+    marginHorizontal: scale(10),
+    alignSelf: 'center',
+    width: scale(335),
+    position: 'relative',
   },
   cardContent: {
     flexDirection: 'row',
@@ -65,25 +100,34 @@ const styles = StyleSheet.create({
   },
   image: {
     width: 150, // Adjust the width as needed
-    height: 150, // Adjust the height as needed
+    height: 130, // Adjust the height as needed
     borderTopLeftRadius: 8,
     borderBottomLeftRadius: 8,
     resizeMode: 'cover',
+    margin: 5,
   },
   iconContainer: {
     position: 'absolute',
     top: 10,
     right: 10,
+    justifyContent: 'center',
     flexDirection: 'row',
+    backgroundColor: 'white',
+    borderRadius: 50,
+    height: 25,
+    width: 25,
+    padding: 10,
+    alignItems: 'center',
   },
   icon: {
-    marginHorizontal: 5,
-    height: 15,
-    width: 14,
+    height: 20,
+    width: 20,
+    alignSelf: 'center',
   },
   textContainer: {
     flex: 1,
-    padding: 10,
+    paddingLeft: 10,
+    alignSelf: 'center',
   },
   carPView: {
     backgroundColor: '#f6f6f6',
@@ -95,7 +139,7 @@ const styles = StyleSheet.create({
     shadowOpacity: 0.5,
     shadowRadius: 3.84,
     marginBottom: 10,
-    width: scale(80),
+    width: scale(95),
   },
   carP: {
     color: blue,
@@ -115,10 +159,13 @@ const styles = StyleSheet.create({
     fontSize: 18,
     fontWeight: '600',
   },
-  time: {fontSize: 18, fontWeight: '500', color: '#242424'},
+  time: {fontSize: 18, fontWeight: '500', color: grey},
   horizontalLine: {
     height: 1,
-    backgroundColor: 'lightgrey',
+    width: scale(335),
+    marginTop: 3,
+    backgroundColor: 'lightgray',
+    alignSelf: 'center',
   },
   timericon: {
     height: 25,
@@ -131,7 +178,6 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'space-between',
     marginHorizontal: 15,
-    marginVertical: 5,
   },
   timerview: {
     flexDirection: 'row',
@@ -161,7 +207,23 @@ const styles = StyleSheet.create({
   subtext: {
     fontSize: 15,
     fontWeight: '500',
-    color: 'black',
+    color: grey,
+  },
+  starview: {
+    position: 'absolute',
+    right: 10,
+    top: 2,
+    backgroundColor: 'white',
+    alignItems: 'center',
+    paddingHorizontal: 6,
+    paddingVertical: 2,
+    flexDirection: 'row',
+    borderRadius: 8,
+    justifyContent: 'center',
+  },
+  staricon: {
+    height: 13,
+    width: 13,
   },
 });
 

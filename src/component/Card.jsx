@@ -1,7 +1,7 @@
 import React from 'react';
 import {View, Image, Text, StyleSheet} from 'react-native';
 import {blue} from '../../config';
-import { scale } from '../utils/scale';
+import {scale} from '../utils/scale';
 // import Icon from 'react-native-vector-icons/FontAwesome'; // Import the icon library you're using
 
 const Card = ({
@@ -18,13 +18,18 @@ const Card = ({
   icon2,
   number,
   spots,
+  rating,
 }) => {
   return (
     <View style={styles.cardContainer}>
       <View style={styles.imageContainer}>
         <Image source={source} style={styles.image} />
         <View style={styles.iconContainer}>
-          <Image source={source1} style={styles.icon} />
+          <View style={styles.starview}>
+            <Image source={source1} style={styles.icon} />
+            <Text style={{textAlign:'center'}}>{rating}</Text>
+          </View>
+
           <Image source={source2} style={styles.icon} />
         </View>
       </View>
@@ -90,7 +95,6 @@ const styles = StyleSheet.create({
     justifyContent: 'space-between',
   },
   icon: {
-    marginHorizontal: 5,
     height: 20,
     width: 20,
   },
@@ -103,7 +107,7 @@ const styles = StyleSheet.create({
   bottomdesc: {
     flexDirection: 'row',
     justifyContent: 'space-between',
-    margin: 10,
+    margin: scale(5),
     alignItems: 'center',
   },
   carPView: {
@@ -120,11 +124,11 @@ const styles = StyleSheet.create({
   carP: {
     color: blue,
     fontWeight: '400',
-    fontSize: 15,
+    fontSize: 13,
   },
   title: {
     fontWeight: '600',
-    fontSize: 17,
+    fontSize: 15,
     alignSelf: 'center',
     color: '#242424',
   },
@@ -133,10 +137,10 @@ const styles = StyleSheet.create({
   },
   pay: {
     color: blue,
-    fontSize: 18,
+    fontSize: 15,
     fontWeight: '600',
   },
-  time: {fontSize: 18, fontWeight: '500', color: '#242424'},
+  time: {fontSize: 15, fontWeight: '500', color: '#242424'},
   horizontalLine: {
     height: 1,
     backgroundColor: 'lightgrey',
@@ -152,7 +156,6 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'space-between',
     marginHorizontal: 5,
-    marginVertical: 5,
   },
   timerview: {
     flexDirection: 'row',
@@ -169,6 +172,15 @@ const styles = StyleSheet.create({
     margin: 1,
     fontWeight: '600',
     fontSize: 16,
+  },
+  starview: {
+    backgroundColor: 'white',
+    alignItems: 'center',
+    paddingHorizontal: 6,
+    paddingVertical: 2,
+    flexDirection: 'row',
+    borderRadius: 8,
+    justifyContent: 'center',
   },
 });
 

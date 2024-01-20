@@ -12,12 +12,12 @@ import {blue} from '../../config';
 import Custombutton from '../component/Custombuton';
 import Header from '../component/Header';
 function Forgetpass({navigation}) {
-  console.log(navigation, 'naviga');
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [isChecked, setIsChecked] = useState(false);
   const [hidePassword, setHidePassword] = useState(true);
+  const [hidePasswordc, setHidePasswordc] = useState(true);
   const [Passwordconfirm, setPasswordconfirm] = useState('');
   const signup = () => {
     navigation.navigate('OtpScreen');
@@ -33,9 +33,9 @@ function Forgetpass({navigation}) {
         </Text>
         <View style={styles.inputContainer}>
           <Text style={styles.lable}>Password:</Text>
-          <View style={styles.passwordInput}>
+          <View>
             <TextInput
-              style={{flex: 1}}
+              style={styles.passwordInput}
               placeholder="Enter your password"
               onChangeText={text => setPassword(text)}
               value={password}
@@ -59,27 +59,26 @@ function Forgetpass({navigation}) {
             </TouchableOpacity>
           </View>
         </View>
-
         <View style={styles.inputContainer}>
           <Text style={styles.lable}>Confirm Password:</Text>
-          <View style={styles.passwordInput}>
+          <View>
             <TextInput
-              style={{flex: 1}}
+              style={styles.passwordInput}
               placeholder="Enter your password"
               onChangeText={text => setPasswordconfirm(text)}
               value={Passwordconfirm}
-              secureTextEntry={hidePassword}
+              secureTextEntry={hidePasswordc}
             />
             <TouchableOpacity
               style={styles.eyeIcon}
-              onPress={() => setHidePassword(!hidePassword)}>
-              {!hidePassword && (
+              onPress={() => setHidePasswordc(!hidePasswordc)}>
+              {!hidePasswordc && (
                 <Image
                   source={require('../../assets/Image/eye.png')}
                   style={styles.show}
                 />
               )}
-              {hidePassword && (
+              {hidePasswordc && (
                 <Image
                   source={require('../../assets/Image/hideeye.png')}
                   style={styles.show}
@@ -173,11 +172,15 @@ const styles = StyleSheet.create({
     height: 45,
     backgroundColor: '#f6f6f6',
     alignItems: 'center',
+    position: 'relative',
   },
   show: {
     height: 20,
     width: 20,
     alignSelf: 'center',
+    position: 'absolute',
+    bottom: 10,
+    right: 10,
   },
   forgetview: {
     borderBottomColor: blue,

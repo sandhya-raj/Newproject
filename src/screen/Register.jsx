@@ -15,7 +15,7 @@ import {blue} from '../../config';
 import Custombutton from '../component/Custombuton';
 
 function Register({navigation}) {
-  console.log(navigation, 'naviga');
+  // console.log(navigation, 'naviga');
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');

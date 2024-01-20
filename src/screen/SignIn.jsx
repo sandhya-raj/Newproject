@@ -12,7 +12,7 @@ import Custombutton from '../component/Custombuton';
 import Card from '../component/Card';
 import CardHori from '../component/CardHori';
 function SignIn({navigation}) {
-  console.log(navigation, 'naviga');
+  // console.log(navigation, 'naviga');
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
@@ -20,7 +20,7 @@ function SignIn({navigation}) {
   const [hidePassword, setHidePassword] = useState(true);
 
   const signin = () => {
-    navigation.navigate('Home');
+    navigation.navigate('Tabs');
   };
 
   return (

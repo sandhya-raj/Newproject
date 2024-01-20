@@ -14,36 +14,77 @@ import TabBar from '../component/Tabbar';
 import {blue} from '../../config';
 import {scale, verticalScale} from '../utils/scale';
 import Card from '../component/Card';
+import CardHori from '../component/CardHori';
 const data = [
   {
     id: 1,
     source: require('../../assets/Image/homepageimage.jpeg'),
-    source1: require('../../assets/Image/homepageimage.jpeg'),
-    source2: require('../../assets/Image/homepageimage.jpeg'),
+    source1: require('../../assets/Image/star.png'),
+    source2: require('../../assets/Image/heart.png'),
+    rating: '4.5',
     text: 'Car Parking',
     text1: 'ParkEase Pro',
     pay: '$ 5.00',
     hours: '/hr',
     time: '5',
     min: 'min',
-    icon1: require('../../assets/Image/homepageimage.jpeg'),
-    icon2: require('../../assets/Image/homepageimage.jpeg'),
+    icon1: require('../../assets/Image/time.png'),
+    icon2: require('../../assets/Image/spot.png'),
     number: '28',
     spots: 'spots',
   },
   {
     id: 2,
     source: require('../../assets/Image/homepageimage.jpeg'),
-    source1: require('../../assets/Image/homepageimage.jpeg'),
-    source2: require('../../assets/Image/homepageimage.jpeg'),
+    source1: require('../../assets/Image/star.png'),
+    source2: require('../../assets/Image/heart.png'),
+    rating: '4.5',
     text: 'Car Parking',
     text1: 'ParkEase Pro',
     pay: '$ 5.00',
     hours: '/hr',
     time: '5',
     min: 'min',
-    icon1: require('../../assets/Image/homepageimage.jpeg'),
-    icon2: require('../../assets/Image/homepageimage.jpeg'),
+    icon1: require('../../assets/Image/time.png'),
+    icon2: require('../../assets/Image/spot.png'),
+    number: '28',
+    spots: 'spots',
+  },
+];
+const data1 = [
+  {
+    id: 1,
+    source: require('../../assets/Image/homepageimage.jpeg'),
+    source1: require('../../assets/Image/heart.png'),
+    rating: '4.5',
+    text: 'Car Parking',
+    text1: 'ParkEase Pro',
+    pay: '$ 5.00',
+    hours: '/hr',
+    time: '5',
+    min: 'min',
+    location: 'New York , USA',
+    locationicon: require('../../assets/Image/location.png'),
+    icon1: require('../../assets/Image/time.png'),
+    icon2: require('../../assets/Image/spot.png'),
+    number: '28',
+    spots: 'spots',
+  },
+  {
+    id: 2,
+    source: require('../../assets/Image/homepageimage.jpeg'),
+    source1: require('../../assets/Image/heart.png'),
+    rating: '4.5',
+    text: 'Car Parking',
+    text1: 'ParkEase Pro',
+    pay: '$ 5.00',
+    hours: '/hr',
+    time: '5',
+    min: 'min',
+    location: 'New York , USA',
+    locationicon: require('../../assets/Image/location.png'),
+    icon1: require('../../assets/Image/time.png'),
+    icon2: require('../../assets/Image/spot.png'),
     number: '28',
     spots: 'spots',
   },
@@ -52,10 +93,8 @@ const Home = () => {
   const [searchText, setSearchText] = useState('');
 
   const handleSearch = text => {
-    // Implement your search logic here using the 'text' value
     console.log('Searching for:', text);
     setSearchText(text);
-    // Perform your search operations here (e.g., API calls, filtering data)
   };
   return (
     <View style={styles.container}>
@@ -104,7 +143,7 @@ const Home = () => {
           </View>
           <View style={styles.filterContainer}>
             <Image
-              source={require('../../assets/Image/filter.jpeg')}
+              source={require('../../assets/Image/filter2.png')}
               style={{height: 25, width: 25, alignSelf: 'center'}}
             />
           </View>
@@ -126,6 +165,7 @@ const Home = () => {
                   source={item.source}
                   source1={item.source1}
                   source2={item.source2}
+                  rating={item.rating}
                   text={item.text}
                   text1={item.text1}
                   pay={item.pay}
@@ -155,17 +195,20 @@ const Home = () => {
             </TouchableOpacity>
           </View>
           <FlatList
-            data={data}
+            data={data1}
+            style={styles.flatitem}
             renderItem={({item}) => {
               return (
-                <Card
+                <CardHori
                   source={item.source}
                   source1={item.source1}
-                  source2={item.source2}
                   text={item.text}
+                  rating={item.rating}
                   text1={item.text1}
                   pay={item.pay}
                   hours={item.hours}
+                  location={item.location}
+                  locationicon={item.locationicon}
                   time={item.time}
                   min={item.min}
                   icon1={item.icon1}
@@ -176,7 +219,7 @@ const Home = () => {
               );
             }}
             ItemSeparatorComponent={() => <View style={styles.separator} />}
-            horizontal={true}
+            horizontal={false}
             showsHorizontalScrollIndicator={false}
             keyExtractor={item => {
               item.id;
@@ -184,7 +227,6 @@ const Home = () => {
           />
         </View>
       </ScrollView>
-      <TabBar />
     </View>
   );
 };
@@ -262,6 +304,7 @@ const styles = StyleSheet.create({
     backgroundColor: 'white',
     width: '20%',
     marginLeft: 5,
+    justifyContent: 'center',
   },
   papularcard: {
     marginHorizontal: scale(10),
@@ -282,5 +325,8 @@ const styles = StyleSheet.create({
   },
   separator: {
     marginHorizontal: scale(5),
+  },
+  flatitem: {
+    paddingBottom: 60,
   },
 });
