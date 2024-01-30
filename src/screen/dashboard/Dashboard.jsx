@@ -10,17 +10,17 @@ import {
   FlatList,
   ScrollView,
 } from 'react-native';
-import TabBar from '../component/Tabbar';
-import {blue} from '../../config';
-import {scale, verticalScale} from '../utils/scale';
-import Card from '../component/Card';
-import CardHori from '../component/CardHori';
+import TabBar from '../../component/Tabbar';
+import {blue} from '../../../config';
+import {scale, verticalScale} from '../../utils/scale';
+import Card from '../../component/Card';
+import CardHori from '../../component/CardHori';
 const data = [
   {
     id: 1,
-    source: require('../../assets/Image/homepageimage.jpeg'),
-    source1: require('../../assets/Image/star.png'),
-    source2: require('../../assets/Image/heart.png'),
+    source: require('../../../assets/Image/homepageimage.jpeg'),
+    source1: require('../../../assets/Image/star.png'),
+    source2: require('../../../assets/Image/heart.png'),
     rating: '4.5',
     text: 'Car Parking',
     text1: 'ParkEase Pro',
@@ -28,16 +28,16 @@ const data = [
     hours: '/hr',
     time: '5',
     min: 'min',
-    icon1: require('../../assets/Image/time.png'),
-    icon2: require('../../assets/Image/spot.png'),
+    icon1: require('../../../assets/Image/time.png'),
+    icon2: require('../../../assets/Image/spot.png'),
     number: '28',
     spots: 'spots',
   },
   {
     id: 2,
-    source: require('../../assets/Image/homepageimage.jpeg'),
-    source1: require('../../assets/Image/star.png'),
-    source2: require('../../assets/Image/heart.png'),
+    source: require('../../../assets/Image/homepageimage.jpeg'),
+    source1: require('../../../assets/Image/star.png'),
+    source2: require('../../../assets/Image/heart.png'),
     rating: '4.5',
     text: 'Car Parking',
     text1: 'ParkEase Pro',
@@ -45,8 +45,8 @@ const data = [
     hours: '/hr',
     time: '5',
     min: 'min',
-    icon1: require('../../assets/Image/time.png'),
-    icon2: require('../../assets/Image/spot.png'),
+    icon1: require('../../../assets/Image/time.png'),
+    icon2: require('../../../assets/Image/spot.png'),
     number: '28',
     spots: 'spots',
   },
@@ -54,8 +54,8 @@ const data = [
 const data1 = [
   {
     id: 1,
-    source: require('../../assets/Image/homepageimage.jpeg'),
-    source1: require('../../assets/Image/heart.png'),
+    source: require('../../../assets/Image/homepageimage.jpeg'),
+    source1: require('../../../assets/Image/heart.png'),
     rating: '4.5',
     text: 'Car Parking',
     text1: 'ParkEase Pro',
@@ -64,16 +64,16 @@ const data1 = [
     time: '5',
     min: 'min',
     location: 'New York , USA',
-    locationicon: require('../../assets/Image/location.png'),
-    icon1: require('../../assets/Image/time.png'),
-    icon2: require('../../assets/Image/spot.png'),
+    locationicon: require('../../../assets/Image/location.png'),
+    icon1: require('../../../assets/Image/time.png'),
+    icon2: require('../../../assets/Image/spot.png'),
     number: '28',
     spots: 'spots',
   },
   {
     id: 2,
-    source: require('../../assets/Image/homepageimage.jpeg'),
-    source1: require('../../assets/Image/heart.png'),
+    source: require('../../../assets/Image/homepageimage.jpeg'),
+    source1: require('../../../assets/Image/heart.png'),
     rating: '4.5',
     text: 'Car Parking',
     text1: 'ParkEase Pro',
@@ -82,14 +82,14 @@ const data1 = [
     time: '5',
     min: 'min',
     location: 'New York , USA',
-    locationicon: require('../../assets/Image/location.png'),
-    icon1: require('../../assets/Image/time.png'),
-    icon2: require('../../assets/Image/spot.png'),
+    locationicon: require('../../../assets/Image/location.png'),
+    icon1: require('../../../assets/Image/time.png'),
+    icon2: require('../../../assets/Image/spot.png'),
     number: '28',
     spots: 'spots',
   },
 ];
-const Home = () => {
+const Home = ({navigation}) => {
   const [searchText, setSearchText] = useState('');
 
   const handleSearch = text => {
@@ -105,19 +105,19 @@ const Home = () => {
             <Text style={styles.locationtext}>location</Text>
             <View style={styles.locationnameview}>
               <Image
-                source={require('../../assets/Image/location.png')}
+                source={require('../../../assets/Image/location.png')}
                 style={styles.locationicon}
               />
               <Text style={styles.subtext}>New York , USA</Text>
               <Image
-                source={require('../../assets/Image/downW.png')}
+                source={require('../../../assets/Image/downW.png')}
                 style={styles.locationicon}
               />
             </View>
           </View>
           <View style={styles.notiview}>
             <Image
-              source={require('../../assets/Image/notification.png')}
+              source={require('../../../assets/Image/notification.png')}
               style={styles.notificationimg}
             />
           </View>
@@ -131,7 +131,7 @@ const Home = () => {
           }}>
           <View style={styles.searchContainer}>
             <Image
-              source={require('../../assets/Image/search.png')}
+              source={require('../../../assets/Image/search.png')}
               style={{height: 15, width: 15, alignSelf: 'center'}}
             />
             <TextInput
@@ -143,7 +143,7 @@ const Home = () => {
           </View>
           <View style={styles.filterContainer}>
             <Image
-              source={require('../../assets/Image/filter2.png')}
+              source={require('../../../assets/Image/filter2.png')}
               style={{height: 25, width: 25, alignSelf: 'center'}}
             />
           </View>
@@ -153,7 +153,7 @@ const Home = () => {
         <View style={styles.papularcard}>
           <View style={styles.papularview}>
             <Text style={styles.parking}>Popular Parking</Text>
-            <TouchableOpacity>
+            <TouchableOpacity onPress={() => navigation.navigate('Papular')}>
               <Text style={styles.seeall}>See all</Text>
             </TouchableOpacity>
           </View>

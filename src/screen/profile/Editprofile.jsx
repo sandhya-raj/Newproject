@@ -11,83 +11,31 @@ import {
   TextInput,
   Modal,
 } from 'react-native';
+import DatePicker from 'react-native-date-picker';
 import Header from '../../component/Header';
-import {verticalScale} from '../../utils/scale';
+import {scale, verticalScale} from '../../utils/scale';
 import {blue} from '../../../config';
-
-const data = [
-  {
-    id: 1,
-    source: require('../../../assets/Image/profile.png'),
-    source1: require('../../../assets/Image/chevron.png'),
-    text: 'Your Profile',
-    route: 'edit',
-  },
-  {
-    id: 2,
-    source: require('../../../assets/Image/payment.png'),
-    source1: require('../../../assets/Image/chevron.png'),
-    text: 'Payment Methods',
-    route: 'Editprofile',
-  },
-  {
-    id: 3,
-    source: require('../../../assets/Image/wallet.png'),
-    source1: require('../../../assets/Image/chevron.png'),
-    text: 'My Wallet',
-    route: 'Editprofile',
-  },
-  {
-    id: 4,
-    source: require('../../../assets/Image/settings.png'),
-    source1: require('../../../assets/Image/chevron.png'),
-    text: 'Settings',
-    route: 'Editprofile',
-  },
-  {
-    id: 5,
-    source: require('../../../assets/Image/help.png'),
-    source1: require('../../../assets/Image/chevron.png'),
-    text: 'Help Center',
-    route: 'Editprofile',
-  },
-  {
-    id: 6,
-    source: require('../../../assets/Image/privacy.png'),
-    source1: require('../../../assets/Image/chevron.png'),
-    text: 'Privacy Policy',
-    route: 'Editprofile',
-  },
-  {
-    id: 7,
-    source: require('../../../assets/Image/invites.png'),
-    source1: require('../../../assets/Image/chevron.png'),
-    text: 'Invite Friends',
-    route: 'Editprofile',
-  },
-  {
-    id: 8,
-    source: require('../../../assets/Image/logout.png'),
-    source1: require('../../../assets/Image/chevron.png'),
-    text: 'Log out',
-    route: 'Editprofile',
-  },
-];
+import Customdropdown from '../../component/Customdropdown';
+import CustomDatepicker from '../../component/CustomDatepicker';
+import Custombutton from '../../component/Custombuton';
 
 const EditProfile = ({navigation}) => {
   const [name, setName] = useState('');
-  const [gender, setGender] = useState('');
-  const [isModalVisible, setModalVisible] = useState(false);
-  const genderOptions = ['Select Gender', 'Male', 'Female', 'Other'];
+  const [number, setNumber] = useState(0);
+  const [email, setEmail] = useState(0);
+  const [date, setDate] = useState(null);
+  const [open, setOpen] = useState(false);
 
-  const handleGenderSelect = selectedGender => {
-    setGender(selectedGender);
-    toggleModal();
+  // const formattedDate = date ? formatDate(date) : 'DD/MM/YYYY';
+  const formatDate = date => {
+    // Check if date is not null before accessing its methods
+    if (date) {
+      return `${date.getDate()}/${date.getMonth() + 1}/${date.getFullYear()}`;
+    } else {
+      return 'DD/MM/YYYY'; // Return a default value or handle accordingly
+    }
   };
 
-  const toggleModal = () => {
-    setModalVisible(!isModalVisible);
-  };
   return (
     <View style={styles.container}>
       <ScrollView>
@@ -113,8 +61,8 @@ const EditProfile = ({navigation}) => {
             <TextInput
               style={styles.input}
               placeholder="Enter your phone number"
-              onChangeText={text => setName(text)}
-              value={name}
+              onChangeText={text => setNumber(text)}
+              value={number}
             />
           </View>
 
@@ -123,46 +71,44 @@ const EditProfile = ({navigation}) => {
             <TextInput
               style={styles.input}
               placeholder="Enter your email"
-              onChangeText={text => setName(text)}
-              value={name}
+              onChangeText={text => setEmail(text)}
+              value={email}
             />
           </View>
 
           <View style={styles.inputContainer}>
             <Text style={styles.lable}>DOB:</Text>
-            <TextInput
-              style={styles.input}
-              placeholder="DD/MM/YYYY"
-              onChangeText={text => setName(text)}
-              value={name}
+            <TouchableOpacity
+              onPress={() => {
+                setOpen(true);
+                formatDate(date);
+              }}
+              style={styles.input}>
+              <Text>{date ? formatDate(date) : 'DD/MM/YYYY'}</Text>
+            </TouchableOpacity>
+            <DatePicker
+              modal
+              mode="date"
+              open={open}
+              date={date || new Date()}
+              onConfirm={date => {
+                setOpen(false);
+                setDate(date);
+              }}
+              onCancel={() => {
+                setOpen(false);
+              }}
             />
           </View>
           <View style={styles.inputContainer}>
-            <Text style={styles.label}>Gender:</Text>
-            <TouchableOpacity style={styles.picker} onPress={toggleModal}>
-              <Text>{gender || 'Select Gender'}</Text>
-            </TouchableOpacity>
-
-            <Modal
-              transparent={true}
-              animationType="slide"
-              visible={isModalVisible}
-              onRequestClose={toggleModal}>
-              <View style={styles.modalContainer}>
-                <View style={styles.modalContent}>
-                  {genderOptions.map((option, index) => (
-                    <TouchableOpacity
-                      key={index}
-                      style={styles.modalOption}
-                      onPress={() => handleGenderSelect(option)}>
-                      <Text>{option}</Text>
-                    </TouchableOpacity>
-                  ))}
-                </View>
-              </View>
-            </Modal>
+            <Text style={styles.lable}>Gender:</Text>
+            <Customdropdown />
           </View>
         </View>
+        <Custombutton
+          text={'Update Profile'}
+          customContainerStyle={styles.btn}
+        />
       </ScrollView>
     </View>
   );
@@ -176,7 +122,7 @@ const styles = StyleSheet.create({
   },
   profileview: {
     alignItems: 'center',
-    marginVertical: verticalScale(20),
+    marginVertical: verticalScale(15),
   },
   profile: {
     height: 100,
@@ -201,7 +147,7 @@ const styles = StyleSheet.create({
   },
 
   inputContainer: {
-    marginVertical: 10,
+    marginVertical: 5,
   },
   label: {
     marginRight: 10,
@@ -223,5 +169,11 @@ const styles = StyleSheet.create({
     paddingVertical: 10,
     borderBottomWidth: 1,
     borderBottomColor: 'gray',
+  },
+  btn: {
+    alignSelf: 'center',
+    width: scale(330),
+    marginTop: 50,
+    borderRadius: 30,
   },
 });

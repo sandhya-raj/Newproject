@@ -61,24 +61,23 @@ const Explore = () => {
 
   return (
     <View style={styles.container}>
-      <ScrollView>
-        <MapView
-          style={{height: 400, width: 300, marginLeft: 20}} // Adjust the height as needed
-          initialRegion={{
-            latitude: 27.9462,
-            longitude: 80.7787,
-            latitudeDelta: 0.0922,
-            longitudeDelta: 0.0421,
-          }}>
-          <Marker
-            style={{height: 50, width: 50}}
-            coordinate={{latitude: 27.943, longitude: 80.77062}}
-            title="Bajpai Colony"
-            description="This is a marker in Lakhimpur, India"
-            pinColor="green"
-          />
-        </MapView>
+      <MapView
+        style={styles.map}
+        initialRegion={{
+          latitude: 26.9462,
+          longitude: 89.7787,
+          latitudeDelta: 0.0922,
+          longitudeDelta: 0.0421,
+        }}>
+        <Marker
+          coordinate={{latitude: 37.78825, longitude: -122.4324}}
+          title="Marker Title"
+          description="Marker Description"
+          pinColor="blue"
+        />
+      </MapView>
 
+      <ScrollView>
         <View style={styles.searchView}>
           <View style={styles.searchContainer}>
             <Image
@@ -103,7 +102,7 @@ const Explore = () => {
         </View>
 
         <View style={styles.exploreCard}>
-          <View style={styles.papularcard}>
+          <View style={styles.popularCard}>
             <FlatList
               data={data}
               renderItem={({item}) => (
@@ -139,7 +138,13 @@ const Explore = () => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
+    position: 'relative',
   },
+  map: {
+    ...StyleSheet.absoluteFillObject,
+    flex: 1,
+  },
+
   searchView: {
     flexDirection: 'row',
     marginHorizontal: scale(20),
@@ -177,12 +182,11 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
   },
   exploreCard: {
-    //  marginTop: 400, // Adjust the marginTop as needed
-    paddingHorizontal: scale(15),
+    marginTop: 370,
   },
-  papularcard: {
-    marginVertical: verticalScale(10),
-    paddingBottom: 50,
+  popularCard: {
+    marginVertical: verticalScale(1),
+    marginHorizontal: 10,
   },
   separator: {
     marginHorizontal: scale(1),

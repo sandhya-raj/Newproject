@@ -7,7 +7,7 @@ import Landing from '../screen/Landing';
 import OtpScreen from '../screen/OtpScreen';
 import SignIn from '../screen/SignIn';
 import Forgetpass from '../screen/Forgetpass';
-import Home from '../screen/Dashboard';
+import Home from '../screen/dashboard/Dashboard';
 import TabBar from './Tabbar';
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 import Profile from '../screen/profile/Profile';
@@ -15,6 +15,9 @@ import Explore from '../screen/Explore';
 import Favorite from '../screen/Favorite';
 import Parking from '../screen/parking/Parking';
 import EditProfile from '../screen/profile/Editprofile';
+import Payment from '../screen/payment/Payment';
+import Wallet from '../screen/wallet/Wallet';
+import Papular from '../screen/dashboard/PopularParking';
 const Stack = createNativeStackNavigator();
 
 export const Navigation = () => {
@@ -33,6 +36,9 @@ export const Navigation = () => {
         {/* <Stack.Screen name="Home" component={Home} /> */}
         <Stack.Screen name={'Tabs'} component={Tabs} />
         <Stack.Screen name="edit" component={EditProfile} />
+        <Stack.Screen name="Payment" component={Payment} />
+        <Stack.Screen name="Wallet" component={Wallet} />
+        <Stack.Screen name="Papular" component={Papular} />
         {/* <Stack.Screen name="Booking" component={BookingScreen} /> */}
         {/* <Stack.Screen name="Explore" component={Explore} />
         <Stack.Screen name="Favorite" component={Favorite} /> */}

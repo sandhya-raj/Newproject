@@ -25,14 +25,14 @@ const data = [
     source: require('../../../assets/Image/payment.png'),
     source1: require('../../../assets/Image/chevron.png'),
     text: 'Payment Methods',
-    route: 'Editprofile',
+    route: 'Payment',
   },
   {
     id: 3,
     source: require('../../../assets/Image/wallet.png'),
     source1: require('../../../assets/Image/chevron.png'),
     text: 'My Wallet',
-    route: 'Editprofile',
+    route: 'Wallet',
   },
   {
     id: 4,

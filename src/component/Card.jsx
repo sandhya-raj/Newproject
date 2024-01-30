@@ -30,7 +30,7 @@ const Card = ({
             <Text style={{textAlign:'center'}}>{rating}</Text>
           </View>
 
-          <Image source={source2} style={styles.icon} />
+          <Image source={source2} style={styles.favorite} />
         </View>
       </View>
       <View style={styles.bottomdesc}>
@@ -95,6 +95,10 @@ const styles = StyleSheet.create({
     justifyContent: 'space-between',
   },
   icon: {
+    height: 15,
+    width: 15,
+  },
+  favorite:{
     height: 20,
     width: 20,
   },
@@ -146,8 +150,8 @@ const styles = StyleSheet.create({
     backgroundColor: 'lightgrey',
   },
   timericon: {
-    height: 20,
-    width: 20,
+    height: 15,
+    width: 15,
     alignSelf: 'center',
     margin: 1,
   },

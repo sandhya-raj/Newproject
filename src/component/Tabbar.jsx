@@ -58,12 +58,13 @@ const Tab = () => {
       style={styles.bottom}
       renderItem={({item, index}) => {
         return (
-          <View style={styles.tabview}>
+          <View>
             <TouchableOpacity
               onPress={() => {
                 navigation.navigate(item.route);
                 setSelectedTab(index);
-              }}>
+              }}
+              style={styles.item}>
               <Image
                 source={index === selectedTab ? item.imageSelected : item.image}
                 style={
@@ -99,15 +100,9 @@ const styles = StyleSheet.create({
     alignSelf: 'center',
     backgroundColor: 'white',
     width: '100%',
-    paddingVertical: 4,
+    paddingVertical: 8,
   },
-  tabview: {
-    margin: 1,
-    alignItems: 'center',
-    justifyContent: 'center',
-    alignSelf: 'center',
-    paddingLeft: 11,
-  },
+
   icon: {
     height: 20,
     width: 20,
@@ -120,5 +115,10 @@ const styles = StyleSheet.create({
   },
   separator: {
     marginHorizontal: scale(10),
+  },
+  item: {
+    paddingLeft: 11,
+    alignItems: 'center',
+    justifyContent: 'space-between',
   },
 });
